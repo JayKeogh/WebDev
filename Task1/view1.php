@@ -1,30 +1,35 @@
+<!--
+    StudentName:   Jay Keogh
+    Id:            C00300208
+    Lab:           3
+    Task:          1
+-->
+
 <?php
 // Include the database connection file
-include 'db.inc.php';
+include 'db.inc1.php';
 
 // Set the default timezone to UTC
 date_default_timezone_set("UTC");
 
-// ISSUE: Incorrect syntax for accessing $_POST values
-// $_POST('personid') should be $_POST['personid']
+// Construct SQL query to select a person based on the provided person ID
 $sql = "SELECT * FROM persons WHERE personid = " . $_POST['personid'];
 
-// Execute the query
+// Execute the query and check if it was successful
 $result = mysqli_query($con, $sql);
 
-// ISSUE: Missing assignment operator "=" in row count statement
-// It should be: $rowcount = mysqli_affected_rows($con);
+// Get the number of rows affected by the query
 $rowcount = mysqli_affected_rows($con);
 
 // Check if exactly one record was found
 if ($rowcount == 1) {
+    // If a record was found, display the details
     echo "<br>The details of the selected person are:<br><br>";
 
     // Fetch the record as an associative array
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-    // ISSUE: Incorrect syntax for accessing array values
-    // $row('firstName') should be $row['firstName']
+    // Display person details
     echo "The person ID is: " . $_POST['personid'] . "<br><br>";
     echo "First Name is: " . $row['firstName'] . "<br>";
     echo "Last Name is: " . $row['lastName'] . "<br>";
@@ -35,6 +40,7 @@ if ($rowcount == 1) {
 }
 // If no matching records were found
 else if ($rowcount == 0) {
+    // Display a message if no records were found
     echo "No matching records found.";
 }
 
