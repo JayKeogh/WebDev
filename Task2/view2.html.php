@@ -1,3 +1,9 @@
+<!--
+    StudentName:   Jay Keogh
+    Id:            C00300208
+    Lab:           3
+    Task:          2
+-->
 
 <?php session_start(); ?> <!-- Start or resume a session -->
 
@@ -31,10 +37,11 @@
             <label for="surname">Last Name</label>
             <input type="text" name="surname" id="surname" placeholder="Surname" 
                 disabled value="<?php if (isset($_SESSION['lastname'])) echo $_SESSION['lastname']; ?>"/>
+            <!-- `disabled` prevents the user from modifying the value -->
         </p>
 
         <p>
-            <!-- Label for first name -->
+            <!-- Label for email -->
             <label for="email">Email</label>
             <input type="text" name="email" id="email" placeholder="Email" 
                 disabled value="<?php if (isset($_SESSION['email'])) echo $_SESSION['email']; ?>"/>
@@ -42,7 +49,7 @@
         </p>
 
         <p>
-            <!-- Label for first name -->
+            <!-- Label for phone -->
             <label for="phone">Phone</label>
             <input type="text" name="phone" id="phone" placeholder="Phone" 
                 disabled value="<?php if (isset($_SESSION['phone'])) echo $_SESSION['phone']; ?>"/>
