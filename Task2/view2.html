@@ -1,19 +1,32 @@
-<html>
 
+<html>
 <body>
 
-<form action="view.php" method="Post">
+    <!-- Form to submit a person ID to view their record -->
+    <form action="view.php" method="POST"> 
+        <!-- The form data will be sent to "view.php" using the POST method -->
 
-<p><label> Enter the personid of the record you want to view
-<input type="text" name="personid" id="personid" placeholder = "person id" autocomplete=off required/> (Person id)
-</label>
-</p>
+        <p>
+            <!-- Label for the person ID input field -->
+            <label> Enter the person ID of the record you want to view:
+                <!-- Text input field for entering the person ID -->
+                <input type="text" name="personid" id="personid" placeholder="Person ID" 
+                    autocomplete="off" required/> 
+                <!-- `autocomplete=off` prevents browser autofill -->
+                <!-- `required` ensures this field must be filled before submission -->
+                (Person ID)
+            </label>
+        </p>
 
-<br> <br>
-    <input type="submit" value = "Submit"/>
-    <input type="reset" value = "Clear"/>
+        <br> <br>
 
-<p>
-</form>  
+        <!-- Submit button to send the form data to view.php -->
+        <input type="submit" value="Submit"/>
+
+        <!-- Reset button to clear the form fields -->
+        <input type="reset" value="Clear"/>
+
+    </form> <!-- Ensure the form tag is properly closed -->
+
 </body>
 </html>
