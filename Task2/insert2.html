@@ -1,3 +1,9 @@
+<!--
+    StudentName:   Jay Keogh
+    Id:            C00300208
+    Lab:           3
+    Task:          2
+-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,30 +38,31 @@
             <!-- Label for date of birth input field -->
             <label for="dob">Date of Birth</label>
             <!-- Date input field for selecting date of birth -->
-            <input type="date" name="dob" id="dob" placeholder="Date of Birth" required/>
+            <input type="date" name="dob" id="dob" required/>
         </p>
 
         <p>
-            <!-- Label for date of birth input field -->
-            <label for="dob">Phone</label>
-            <!-- Date input field for selecting date of birth -->
+            <!-- Label for phone number input field -->
+            <label for="phone">Phone</label>
+            <!-- Number input field for phone number -->
             <input type="number" name="phone" id="phone" placeholder="Phone" required/>
         </p>
 
         <p>
-            <!-- Label for date of birth input field -->
-            <label for="dob">Email</label>
-            <!-- Date input field for selecting date of birth -->
-            <input type="text" name="email" id="email" placeholder="Email" required/>
+            <!-- Label for email input field -->
+            <label for="email">Email</label>
+            <!-- Text input field for email -->
+            <input type="email" name="email" id="email" placeholder="Email" required/>
+            <!-- Changed input type from "text" to "email" to ensure proper email validation -->
         </p>
 
-    
+        <br>
 
-    <br>
+        <!-- Submit button to send form data -->
+        <input type="submit" value="Submit"/> 
 
-    <!-- Submit and reset buttons should be inside the <form> tag -->
-    <input type="submit" value="Submit"/> 
-    <input type="reset" value="Clear"/>
-  </form>
+        <!-- Reset button to clear the form fields -->
+        <input type="reset" value="Clear"/>
+    </form>
 </body>
 </html>
