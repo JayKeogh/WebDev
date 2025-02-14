@@ -10,7 +10,7 @@
 session_start();
 
 // Include the database connection file
-include 'db.inc.php';
+include 'db.inc2.php';
 
 // Retrieve the person ID from the form submission
 $personid = $_POST['personid'];
