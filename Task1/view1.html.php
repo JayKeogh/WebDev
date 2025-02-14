@@ -1,3 +1,10 @@
+<!--
+    StudentName:   Jay Keogh
+    Id:            C00300208
+    Lab:           3
+    Task:          1
+-->
+
 <?php session_start(); ?> <!-- Start or resume a session -->
 
 <html>
@@ -13,7 +20,7 @@
             <input type="text" name="personid" id="personid" placeholder="Person ID" 
                 autocomplete="off" required 
                 value="<?php if (isset($_SESSION['personid'])) echo $_SESSION['personid']; ?>"/>
-            <!-- `isset()` is correctly used to check if a session variable exists -->
+            <!-- `isset()` is used to check if a session variable exists -->
             <!-- The value is prefilled with the session variable if available -->
         </p>
 
@@ -30,6 +37,7 @@
             <label for="surname">Last Name</label>
             <input type="text" name="surname" id="surname" placeholder="Surname" 
                 disabled value="<?php if (isset($_SESSION['lastname'])) echo $_SESSION['lastname']; ?>"/>
+            <!-- `disabled` prevents the user from modifying the value -->
         </p>
 
         <p>
@@ -37,6 +45,7 @@
             <label for="dob">Date of Birth</label>
             <input type="text" name="dob" id="dob" placeholder="Date of Birth" 
                 disabled value="<?php if (isset($_SESSION['dob'])) echo $_SESSION['dob']; ?>"/>
+            <!-- `disabled` prevents the user from modifying the value -->
         </p>
 
         <br><br>
