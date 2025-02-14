@@ -1,3 +1,10 @@
+<!--
+    StudentName:   Jay Keogh
+    Id:            C00300208
+    Lab:           3
+    Task:          2
+-->
+
 <?php
 // Start a new session or resume the existing one
 session_start();
@@ -5,29 +12,27 @@ session_start();
 // Include the database connection file
 include 'db.inc.php';
 
-// Construct SQL query to select a person based on the provided person ID
-// There's an issue here: `$_POST('personiid')` should be `$_POST['personid']`
-$sql = "SELECT * FROM persons WHERE personid = " . $_POST['personid'];
+// Retrieve the person ID from the form submission
+$personid = $_POST['personid'];
 
-// Execute the SQL query and check if it was successful
-if (!$result = mysqli_query($con, $sql)) 
-{
-    // If there's an error, display it and stop the script execution
-    die('Error in querying the database: ' . mysqli_error($con));
-}
+// Construct SQL query to select a person based on the provided person ID
+$sql = "SELECT * FROM persons WHERE personid = $personid";
+
+// Execute the SQL query
+$result = mysqli_query($con, $sql);
 
 // Get the number of rows affected by the query
 $rowcount = mysqli_affected_rows($con);
 
-// There's an issue here: `$_SESSION('personid')` should be `$_SESSION['personid']`
-$_SESSION['personid'] = $_POST['personid'];
+// Store the searched person ID in the session
+$_SESSION['personid'] = $personid;
 
 if ($rowcount == 1) 
 {
     // Fetch the result row as an associative array
-    $row = mysqli_fetch_array($result);
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-    // There's an issue here: `$row('columnName')` should be `$row['columnName']`
+    // Store retrieved person details in session variables
     $_SESSION['personid'] = $row['personId'];
     $_SESSION['firstname'] = $row['firstName'];
     $_SESSION['lastname'] = $row['lastName'];
@@ -37,21 +42,17 @@ if ($rowcount == 1)
 } 
 else if ($rowcount == 0) 
 {
-    // If no record is found, unset session variables related to person details
+    // If no record is found, clear session variables related to person details
     unset($_SESSION['firstname']);
     unset($_SESSION['lastname']);
     unset($_SESSION['dob']);
     unset($_SESSION['email']);
     unset($_SESSION['phone']);
-    
 }
 
 // Close the database connection
 mysqli_close($con);
 
-// Redirect back to the calling form with session variables set, if a record was found
+// Redirect back to the calling form with session variables set if a record was found
 header('Location: view.html.php');
-
-// Alternatively, redirect using JavaScript (commented out)
-// echo "<script>window.location.href = 'view.html.php'</script>";
 ?>
