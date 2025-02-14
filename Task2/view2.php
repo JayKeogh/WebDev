@@ -1,20 +1,24 @@
+<!--
+    StudentName:   Jay Keogh
+    Id:            C00300208
+    Lab:           3
+    Task:          2
+-->
 
 <?php
 // Include the database connection file
-include 'db.inc.php';
+include 'db.inc2.php';
 
 // Set the default timezone to UTC
 date_default_timezone_set("UTC");
 
-// ISSUE: Incorrect syntax for accessing $_POST values
-// $_POST('personid') should be $_POST['personid']
+// Query to retrieve person details based on the person ID
 $sql = "SELECT * FROM persons WHERE personid = " . $_POST['personid'];
 
-// Execute the query
+// Execute the query and store the result
 $result = mysqli_query($con, $sql);
 
-// ISSUE: Missing assignment operator "=" in row count statement
-// It should be: $rowcount = mysqli_affected_rows($con);
+// Get the number of affected rows (i.e., matching records)
 $rowcount = mysqli_affected_rows($con);
 
 // Check if exactly one record was found
@@ -24,8 +28,7 @@ if ($rowcount == 1) {
     // Fetch the record as an associative array
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-    // ISSUE: Incorrect syntax for accessing array values
-    // $row('firstName') should be $row['firstName']
+    // Display the details of the selected person
     echo "The person ID is: " . $_POST['personid'] . "<br><br>";
     echo "First Name is: " . $row['firstName'] . "<br>";
     echo "Last Name is: " . $row['lastName'] . "<br>";
