@@ -34,6 +34,22 @@
         </p>
 
         <p>
+            <!-- Label for first name -->
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" placeholder="Email" 
+                disabled value="<?php if (isset($_SESSION['email'])) echo $_SESSION['email']; ?>"/>
+            <!-- `disabled` prevents the user from modifying the value -->
+        </p>
+
+        <p>
+            <!-- Label for first name -->
+            <label for="phone">Phone</label>
+            <input type="text" name="phone" id="phone" placeholder="Phone" 
+                disabled value="<?php if (isset($_SESSION['phone'])) echo $_SESSION['phone']; ?>"/>
+            <!-- `disabled` prevents the user from modifying the value -->
+        </p>
+        
+        <p>
             <!-- Label for date of birth -->
             <label for="dob">Date of Birth</label>
             <input type="text" name="dob" id="dob" placeholder="Date of Birth" 
