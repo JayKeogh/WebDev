@@ -1,6 +1,13 @@
+<!--
+    StudentName:   Jay Keogh
+    Id:            C00300208
+    Lab:           3
+    Task:          1
+-->
+
 <?php
 // Include the database connection file
-include 'db.inc.php';
+include 'db.inc1.php';
 
 // Set the default timezone to UTC
 date_default_timezone_set("UTC");
@@ -8,7 +15,7 @@ date_default_timezone_set("UTC");
 // Display the default values received from the form
 echo "The default values sent down are: <br>";
 
-// ISSUE: `$_POST('firstname')` should be `$_POST['firstname']` (Incorrect use of parentheses)
+// Display first name and surname from the POST data
 echo "First Name is: " . $_POST['firstname'] . "<br>";
 echo "Surname is: " . $_POST['surname'] . "<br>";
 
@@ -18,7 +25,7 @@ $date = date_create($_POST['dob']);
 // Display formatted date (Fix: Use "Y" for four-digit year instead of "y" for two-digit year)
 echo "Date of Birth is: " . date_format($date, "d/m/Y") . "<br>";
 
-// ISSUE: Incorrect syntax for SQL query (Missing curly braces and incorrect `$_POST` usage)
+// Prepare the SQL query to insert form data into the database
 $sql = "INSERT INTO persons (firstname, lastname, DOB)
 VALUES ('{$_POST['firstname']}', '{$_POST['surname']}', '{$_POST['dob']}')";
 
@@ -29,7 +36,7 @@ if (!mysqli_query($con, $sql))
     die("An Error in the SQL Query: " . mysqli_error($con));  
 }
 
-// ISSUE: `$_POST('firstname')` should be `$_POST['firstname']`
+// Display a confirmation message after inserting the record
 echo "<br>A record has been added for " . $_POST['firstname'] . " " . $_POST['surname'] . ".";
 
 // Close the database connection
