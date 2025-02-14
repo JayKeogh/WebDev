@@ -3,27 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Insert Data Form</title> <!-- Title of the webpage -->
 </head>
 <body>
-    <form action="insert.php" method="post">
-    <p><label for = "firstname"> First name</label>
-    <input type="text" name="firstname" id="firstname" placeholder = "first name"
-        autocomplete=off required/>
+    <!-- Start of the form -->
+    <form action="insert.php" method="post"> 
+        <!-- Form will send data to insert.php using the POST method -->
 
-    </p>
-    <p><label for="surname">Last Name</label>
-    <input type="text" name="surname" id="surname" placeholder = "Surname" required/>
+        <p>
+            <!-- Label for first name input field -->
+            <label for="firstname">First Name</label>
+            <!-- Text input field for first name -->
+            <input type="text" name="firstname" id="firstname" placeholder="First name" 
+                autocomplete="off" required/>
+            <!-- `autocomplete=off` prevents browser autofill -->
+            <!-- `required` ensures the field must be filled before submission -->
+        </p>
 
-    </p>
-    <p><label for="dob">Date of Birth</label>
-        <input type="date" name="dob" id="dob" placeholder = " date of Birth" required/>
-    </form>
+        <p>
+            <!-- Label for last name input field -->
+            <label for="surname">Last Name</label>
+            <!-- Text input field for last name -->
+            <input type="text" name="surname" id="surname" placeholder="Surname" required/>
+        </p>
 
-</p>
-<br>
+        <p>
+            <!-- Label for date of birth input field -->
+            <label for="dob">Date of Birth</label>
+            <!-- Date input field for selecting date of birth -->
+            <input type="date" name="dob" id="dob" placeholder="Date of Birth" required/>
+        </p>
 
-    <input type="submit" value = "Submit"/>
-    <input type="reset" value = "Clear"/>
+    </form> <!-- ISSUE: This form tag is closed too early! -->
+
+    <br>
+
+    <!-- Submit and reset buttons should be inside the <form> tag -->
+    <input type="submit" value="Submit"/> 
+    <input type="reset" value="Clear"/>
+
 </body>
 </html>
