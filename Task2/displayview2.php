@@ -32,6 +32,8 @@ if ($rowcount == 1)
     $_SESSION['firstname'] = $row['firstName'];
     $_SESSION['lastname'] = $row['lastName'];
     $_SESSION['dob'] = $row['DOB'];
+    $_SESSION['email'] = $row['email'];
+    $_SESSION['phone'] = $row['phone'];
 } 
 else if ($rowcount == 0) 
 {
@@ -39,6 +41,9 @@ else if ($rowcount == 0)
     unset($_SESSION['firstname']);
     unset($_SESSION['lastname']);
     unset($_SESSION['dob']);
+    unset($_SESSION['email']);
+    unset($_SESSION['phone']);
+    
 }
 
 // Close the database connection
