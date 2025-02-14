@@ -1,40 +1,45 @@
+<!--
+    StudentName:   Jay Keogh
+    Id:            C00300208
+    Lab:           3
+    Task:          2
+-->
 
 <?php
-// Include the database connection file
+// Include the database connection file to establish a connection
 include 'db.inc.php';
 
 // Set the default timezone to UTC
 date_default_timezone_set("UTC");
 
-// Display the default values received from the form
-echo "The default values sent down are: <br>";
+// Display the values received from the form
+echo "The values received from the form are: <br>";
 
-// ISSUE: `$_POST('firstname')` should be `$_POST['firstname']` (Incorrect use of parentheses)
-echo "First Name is: " . $_POST['firstname'] . "<br>";
-echo "Surname is: " . $_POST['surname'] . "<br>";
-echo "Email is : " . $_POST['email'] . "<br>";
-echo "Phone number is : " . $_POST['phone'] . "<br>";
+// Retrieve and display user input from the POST request
+echo "First Name: " . $_POST['firstname'] . "<br>";
+echo "Last Name: " . $_POST['surname'] . "<br>";
+echo "Email: " . $_POST['email'] . "<br>";
+echo "Phone Number: " . $_POST['phone'] . "<br>";
 
-// Convert the date of birth from the POST request into a date object
+// Convert the date of birth from the form into a date object
 $date = date_create($_POST['dob']);
 
+// Display the formatted date (Uses "Y" for a four-digit year)
+echo "Date of Birth: " . date_format($date, "d/m/Y") . "<br>";
 
-// Display formatted date (Fix: Use "Y" for four-digit year instead of "y" for two-digit year)
-echo "Date of Birth is: " . date_format($date, "d/m/Y") . "<br>";
+// Construct the SQL query to insert the user's data into the 'persons' table
+$sql = "INSERT INTO persons (firstname, lastname, DOB, email, phone)
+        VALUES ('{$_POST['firstname']}', '{$_POST['surname']}', '{$_POST['dob']}', '{$_POST['email']}', '{$_POST['phone']}')";
 
-// ISSUE: Incorrect syntax for SQL query (Missing curly braces and incorrect `$_POST` usage)
-$sql = "INSERT INTO persons (firstname, lastname, DOB)
-VALUES ('{$_POST['firstname']}', '{$_POST['surname']}', '{$_POST['dob']}')";
-
-// Execute the SQL query and check if it was successful
+// Execute the SQL query and check for errors
 if (!mysqli_query($con, $sql)) 
 {
-    // If there's an error in the SQL query, display the error message and stop execution
-    die("An Error in the SQL Query: " . mysqli_error($con));  
+    // Display an error message and terminate the script if the query fails
+    die("An error occurred while inserting data: " . mysqli_error($con));  
 }
 
-// ISSUE: `$_POST('firstname')` should be `$_POST['firstname']`
-echo "<br>A record has been added for " . $_POST['firstname'] . " " . $_POST['surname'] . ".";
+// Display a success message confirming the record insertion
+echo "<br>A record has been successfully added for " . $_POST['firstname'] . " " . $_POST['surname'] . ".";
 
 // Close the database connection
 mysqli_close($con);
