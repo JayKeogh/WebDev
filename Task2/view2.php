@@ -29,9 +29,11 @@ if ($rowcount == 1) {
     echo "The person ID is: " . $_POST['personid'] . "<br><br>";
     echo "First Name is: " . $row['firstName'] . "<br>";
     echo "Last Name is: " . $row['lastName'] . "<br>";
+    echo "Email is : " . $row['email'] . "<br>";
+    echo "Phone number is : " . $row['phone'] . "<br>";
 
     // Convert the date of birth to a readable format
-    $date = date_create($row['DOB']);
+    $date = date_create($row['dob']);
     echo "Date of Birth is: " . date_format($date, "d/m/Y") . "<br>";
 }
 // If no matching records were found
