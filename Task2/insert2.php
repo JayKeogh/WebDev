@@ -7,7 +7,7 @@
 
 <?php
 // Include the database connection file to establish a connection
-include 'db.inc.php';
+include 'db.inc2.php';
 
 // Set the default timezone to UTC
 date_default_timezone_set("UTC");
