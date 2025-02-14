@@ -12,9 +12,12 @@ echo "The default values sent down are: <br>";
 // ISSUE: `$_POST('firstname')` should be `$_POST['firstname']` (Incorrect use of parentheses)
 echo "First Name is: " . $_POST['firstname'] . "<br>";
 echo "Surname is: " . $_POST['surname'] . "<br>";
+echo "Email is : " . $_POST['email'] . "<br>";
+echo "Phone number is : " . $_POST['phone'] . "<br>";
 
 // Convert the date of birth from the POST request into a date object
 $date = date_create($_POST['dob']);
+
 
 // Display formatted date (Fix: Use "Y" for four-digit year instead of "y" for two-digit year)
 echo "Date of Birth is: " . date_format($date, "d/m/Y") . "<br>";
