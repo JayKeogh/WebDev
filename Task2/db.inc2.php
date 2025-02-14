@@ -1,4 +1,9 @@
-
+<!--
+    StudentName:   Jay Keogh
+    Id:            C00300208
+    Lab:           3
+    Task:          2
+-->
 <?php 
     // Define database connection parameters
     $hostname = "localhost"; // Hostname of the database server
